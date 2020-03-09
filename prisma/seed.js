@@ -2,11 +2,16 @@ import { PrismaClient } from '@prisma/client'
 
 const prismaClient = new PrismaClient()
 
-async function createPost() {
+async function createCourse() {
   try {
-    await prismaClient.post.create({
+    await prismaClient.course.create({
       data: {
-        title: 'The Second Post by Tim Burns',
+        name: 'Rich Internet Applications II',
+        description:
+          'Most useful DGM course ever created.  Taught by the most brilliant yet humble professor to ever grace the hallways of UVU.',
+        defaultCredits: '3',
+        courseCode: 'DGM 4790',
+        termsOffered: 'Spring',
       },
     })
   } catch (err) {
@@ -16,7 +21,7 @@ async function createPost() {
 
 async function main() {
   try {
-    await createPost()
+    await createCourse()
   } catch (err) {
     console.log(err)
   }
